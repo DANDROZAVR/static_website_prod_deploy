@@ -10,3 +10,5 @@ and
 `npm run deploy`
 
 > Why two but not one? Because sometimes there is need of checking builded code before pushing to production. If you do not have this need, > code can be easily modified for only one command to deploy.
+
+**...This readme is not finished yet...**

@@ -1,6 +1,6 @@
 # static_website_prod_deploy :zap:
 This repo contains code snippets and scripts for easy deploy of static website.  
-Snippets and scripts is suited for Windows environment.
+Snippets and scripts are suited for Windows environment.
 
 # What is this? :icecream:
 

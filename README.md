@@ -22,6 +22,9 @@ Let's break the script into parts.
 `xcopy images prod\\images /Y` - to copy images from source folder to production we are using *xcopy* powershell utility. /y parameter supresses  confirmation prompt of destination files override.  
 `uglifyjs --compress --mangle -o prod/bundle.js -- dist/bundle.js` - to minify js we are using *uglifyjs* utility. Input is `dist/bundle.js` and output marked with the -o flag `prod/bundle.js`.
 `postcss src/styles.css > prod/styles.css` - to minify CSS we are using post css. Input is `src/styles.css` and output `prod/styles.css`.  
-`CALL prepare-html.bat` - calling powershell script which can be found in this repository, we will review it in the next step.
+`CALL prepare-html.bat` - calling powershell script which can be found in this repository, we will review it soon.  
+  
+Second script is **deploy**:  
+It just simply call `deploy.bat` powershell script which sends our production directory content to server, we will review it in details soon.  
 
 **...This readme is not finished yet...**

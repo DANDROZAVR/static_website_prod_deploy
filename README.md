@@ -65,4 +65,4 @@ Let's break it down to see what's happening.
 * `put "D:\your\path\to\folder\prod" /var/www/yourwebsite` - put command just simply sends content of your local folder to remote machine folder. First argument is local, second is remote.  
 * `exit` - after transfering we closing SFTP connection.  
 
-**...This readme is not finished yet...**
+If you find any discrepancies, errors in readme or code, do not hesitate to make pull request or just reach out me with the comments.   Your help is highly appreciated. :heart:

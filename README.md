@@ -41,6 +41,7 @@ Let's break down this script into parts.
 ## deploy.bat
 This script does two things - triggers backup in server and sends production files to server.  
 Let's break this script into parts to get more perception about it.  
+  
 * `@echo OFF` - first just simply turning off the output.  
 * `powershell -Command` - telling batch script that we are going to execute regular powershell commands.  
 * `plink -ssh` - to execute commands remotely on the server we are using `plink` utility (it's putty for cmd). With -ssh flag we specifying that connection must be SSH protocol, this protocol is most secure and most convenient at the moment.  
@@ -49,6 +50,10 @@ Let's break this script into parts to get more perception about it.
 * `root@11.111.111.11` - here we are specifying username of user for which we want to authenticate in the server, after @ symbol goes ip address of the server.  
 Now we can specify commands for our remote server!  
 * `/root/scripts/yourScriptInServer.sh yourwebsitename"` - here we just lauching our backup script located in the server and passing one parameter to it "yourwebsitename". If you want to know more about the script check out my other repository https://github.com/ignasposka/make_website_backup  
-
+  
+We still have second part of *deploy.bat* script, let's inspect it now.  
+  
+`WinSCP.exe /console /script='D:\\your\\path\\to\\winscp\\script\\prod_to_server.txt'` - here we just using WinSCP utility which is ftp client for powershell. /console parameter is being used because we seek only for CLI solutions here. Here we just simply firing up script which does all the work of moving our production code to the server, we will review it shortly.  
+  
 
 **...This readme is not finished yet...**

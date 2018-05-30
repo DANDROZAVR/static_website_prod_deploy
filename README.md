@@ -28,4 +28,15 @@ Let's break the script into parts.
 Second script is **deploy**:  
 It just simply call `deploy.bat` powershell script which sends our production directory content to server, we will review it in details soon.  
 
+## prepare-html.bat  
+This file used to change bundle.js script retrieving destination.  
+Let's break up this script into parts.  
+* `@echo OFF` - first we just turning off script output, we don't need it.  
+* `pause` - pause before processing html file is required, because we need to give some time for html minification which is being done before running this script (commands in powershell are being run asynchronously). Pause just simply stops the script and wait for user input (any key).  
+* `powershell -Command` - this statement is needed when running regular powershell commands in batch script. All powershell commands must be wrapped into double quotes.  
+* `(Get-Content prod/index.html)` - we just simply getting content of index.html file of our production folder.  
+* `-replace '/dist/bundle.js', 'bundle.js'` - replace flag receives two arguments separated by comma. First one is text to replace and second is substitude.  
+* `| Out-File -encoding ASCII prod/index.html"` - we are using pipe to pass altered content to command `Out-File` which fills up specified file with input. Encoding set to ASCII to avoid possible errors.  
+
+
 **...This readme is not finished yet...**

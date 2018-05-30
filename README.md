@@ -30,13 +30,25 @@ It just simply call `deploy.bat` powershell script which sends our production di
 
 ## prepare-html.bat  
 This file used to change bundle.js script retrieving destination.  
-Let's break up this script into parts.  
+Let's break down this script into parts.  
 * `@echo OFF` - first we just turning off script output, we don't need it.  
 * `pause` - pause before processing html file is required, because we need to give some time for html minification which is being done before running this script (commands in powershell are being run asynchronously). Pause just simply stops the script and wait for user input (any key).  
 * `powershell -Command` - this statement is needed when running regular powershell commands in batch script. All powershell commands must be wrapped into double quotes.  
 * `(Get-Content prod/index.html)` - we just simply getting content of index.html file of our production folder.  
 * `-replace '/dist/bundle.js', 'bundle.js'` - replace flag receives two arguments separated by comma. First one is text to replace and second is substitude.  
 * `| Out-File -encoding ASCII prod/index.html"` - we are using pipe to pass altered content to command `Out-File` which fills up specified file with input. Encoding set to ASCII to avoid possible errors.  
+  
+## deploy.bat
+This script does two things - triggers backup in server and sends production files to server.  
+Let's break this script into parts to get more perception about it.  
+* `@echo OFF` - first just simply turning off the output.  
+* `powershell -Command` - telling batch script that we are going to execute regular powershell commands.  
+* `plink -ssh` - to execute commands remotely on the server we are using `plink` utility (it's putty for cmd). With -ssh flag we specifying that connection must be SSH protocol, this protocol is most secure and most convenient at the moment.  
+* `-i D:\your\path\to\private\key\id_rsa.ppk` - with -i flag we are specifying private key for our SSH connection. Of course you can authenticate with password, but I prefer keys for security and convenience.  
+* `-noagent` - this prevents opening putty client, we don't need to deal with GUI when we seek for most automated deploy process.  
+* `root@11.111.111.11` - here we are specifying username of user for which we want to authenticate in the server, after @ symbol goes ip address of the server.  
+Now we can specify commands for our remote server!  
+* `/root/scripts/yourScriptInServer.sh yourwebsitename"` - here we just lauching our backup script located in the server and passing one parameter to it "yourwebsitename". If you want to know more about the script check out my other repository https://github.com/ignasposka/make_website_backup  
 
 
 **...This readme is not finished yet...**

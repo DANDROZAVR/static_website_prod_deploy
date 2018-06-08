@@ -61,7 +61,7 @@ Let's break it down to see what's happening.
   
 * `open sftp://root@11.111.111.11` - we are opening connection by SFTP protocol for server user `root` and server's ip address `11.111.111.11`.  
 * `-privatekey=D:\your\path\to\private\key\id_rsa.ppk` - just simply specifying path to our private key for secure connection to server. If you authenticating with password key is not needed.  
-* `-hostkey="*"` - hostkey is set to any, because I was facing the problems with WinSCP comparing the keys, more information about this issue can be found here: https://winscp.net/forum/viewtopic.php?p=83999#83999 . Anyway, in my case this is not security vulnerability, because code going over the wire is open source, published in github, **if your code is more confidential please consider this part as security vulnerability.**  
+* `-hostkey="ssh-ed25519 256 un5Xf2DHqRtpk6YNV0krt6J6H90s/7TFPpMoIi92KWs="` - hostkey must match with the hostkey of our remote machine. This is used for security reasons, to make sure that files are being transfered into the right mechine. 
 * `put "D:\your\path\to\folder\prod" /var/www/yourwebsite` - put command just simply sends content of your local folder to remote machine folder. First argument is local, second is remote.  
 * `exit` - after transfering we closing SFTP connection.  
 

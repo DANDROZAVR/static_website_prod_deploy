@@ -1,3 +1,3 @@
-open sftp://root@11.111.111.11 -privatekey=D:\your\path\to\private\key\id_rsa.ppk -hostkey="*"
+open sftp://root@11.111.111.11 -privatekey=D:\your\path\to\private\key\id_rsa.ppk -hostkey="ssh-ed25519 256 un5Xf2DHqRtpk6YNV0krt6J6H90s/7TFPpMoIi92KWs="
 put "D:\your\path\to\folder\prod" /var/www/yourwebsite
 exit
